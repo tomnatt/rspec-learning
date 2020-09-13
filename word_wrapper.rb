@@ -16,13 +16,8 @@ class WordWrapper
 
     # This will automatically run the first time since start_index = 0
     while start_index < @input_text.length
-      # If the remainder of the line is shorter than desired or already the right length
-      if @input_text.length - start_index <= @line_length
-        output << @input_text.slice(start_index, @line_length).strip
-        start_index += @line_length
 
-      # If the line ends on or just before a space, take as is
-      elsif @input_text[start_index + @line_length] == ' ' || @input_text[start_index + @line_length + 1] == ' '
+      if short_remainder(start_index) || end_on_space(start_index) || end_before_space(start_index)
         output << @input_text.slice(start_index, @line_length).strip
         start_index += @line_length
 
@@ -49,5 +44,20 @@ class WordWrapper
     end
 
     output.join("\n")
+  end
+
+  # If the remainder of the line is shorter than desired or already the right length
+  def short_remainder(start_index)
+    @input_text.length - start_index <= @line_length
+  end
+
+  # If the line ends on a space
+  def end_on_space(start_index)
+    @input_text[start_index + @line_length] == ' '
+  end
+
+  # If the line ends just before a space
+  def end_before_space(start_index)
+    @input_text[start_index + @line_length + 1] == ' '
   end
 end
