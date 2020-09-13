@@ -45,11 +45,36 @@ describe 'word wrapper' do
     output_text = <<~OUTPUT_TEXT.chomp
       Herearesomewordswhic
       hareallinoneblockand
-      arenotsplit up in an
-      ymeaningfulway
+      arenotsplit up in
+      anymeaningfulway
     OUTPUT_TEXT
 
     line_length = 20
+    ww = WordWrapper.new(input_text, line_length)
+    expect(ww.output).to eql(output_text)
+  end
+
+  it 'outputs text properly when line breaks on a space' do
+    input_text = 'Here are some words and they are very interesting and they need to be changed'
+    output_text = <<~OUTPUT_TEXT.chomp
+      Here are some words
+      and they are very
+      interesting and they
+      need to be changed
+    OUTPUT_TEXT
+
+    line_length = 20
+    ww = WordWrapper.new(input_text, line_length)
+    expect(ww.output).to eql(output_text)
+  end
+
+  it 'outputs text properly when input text is exactly the line length' do
+    input_text = 'Here are some words'
+    output_text = <<~OUTPUT_TEXT.chomp
+      Here are some words
+    OUTPUT_TEXT
+
+    line_length = 19
     ww = WordWrapper.new(input_text, line_length)
     expect(ww.output).to eql(output_text)
   end
