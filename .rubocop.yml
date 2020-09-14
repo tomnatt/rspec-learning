@@ -10,5 +10,5 @@ Style/Documentation:
 Style/ClassAndModuleChildren:
   EnforcedStyle: compact
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 120
