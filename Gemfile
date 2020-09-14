@@ -5,3 +5,4 @@ ruby File.read('.ruby-version').strip
 
 gem 'rspec'
 gem 'rubocop'
+gem 'rubocop-rspec', require: false
