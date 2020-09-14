@@ -1,8 +1,12 @@
 require './word_wrapper'
 
+# rubocop:disable Metrics/BlockLength
 describe WordWrapper do
+  # rubocop:disable RSpec/MultipleExpectations
   it 'checks for valid input' do
+    # rubocop:disable Layout/LineLength
     input_text = 'This is an input string consisting of many exciting words thrown together in a pretty random sentence. And here is another sentence of words which are very interesting. It is definitely too long now to be on a single line.'
+    # rubocop:enable Layout/LineLength
     line_length_invalid = 'foo'
     line_length = 80
     input_text_int = 20
@@ -14,9 +18,12 @@ describe WordWrapper do
     described_class.new(input_text_int, line_length)
     described_class.new(input_text, line_length)
   end
+  # rubocop:enable RSpec/MultipleExpectations
 
   it 'outputs text properly with long input' do
+    # rubocop:disable Layout/LineLength
     input_text = 'This is an input string consisting of many exciting words thrown together in a pretty random sentence. And here is another sentence of words which are very interesting. It is definitely too long now to be on a single line.'
+    # rubocop:enable Layout/LineLength
     output_text = <<~OUTPUT_TEXT.chomp
       This is an input string consisting of many exciting words
       thrown together in a pretty random sentence. And here is
@@ -79,3 +86,4 @@ describe WordWrapper do
     expect(ww.output).to eql(output_text)
   end
 end
+# rubocop:enable Metrics/BlockLength
