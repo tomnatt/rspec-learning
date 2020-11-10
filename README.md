@@ -1,4 +1,11 @@
-# rspec-learning
-Playing with rspec
+# Learning RSpec
 
-And some [coding katas from MadeTech](https://learn.madetech.com/katas/)
+Playing with rspec basics, using some [coding katas from MadeTech](https://learn.madetech.com/katas/).
+
+To run tests, clone the code then:
+```
+bundle install
+bundle exec rspec
+```
+
+Or run the individual files.
